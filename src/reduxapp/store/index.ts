@@ -1,0 +1,8 @@
+import { ProductInfo } from "../../dataschema/props";
+
+export interface IState  {
+    products:  ProductInfo[],
+    product: ProductInfo | null,
+    message: string
+}
+ 
