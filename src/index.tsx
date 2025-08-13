@@ -1,47 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
-import { productReducer } from './reduxsagaapp/reducers';
-import MainReduxSagaComponent from './reduxsagaapp/components/mainreduxsagacomponent';
-import createSagaMiddleware from "@redux-saga/core";
-import { watchProductActions } from './reduxsagaapp/effects'; 
+import { PublicClientApplication } from "@azure/msal-browser";
+import { MsalProvider } from "@azure/msal-react";
 import './index.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
+import ProductComponent from './components/productcomponent';
 import reportWebVitals from './reportWebVitals';
- 
+import ProductHttpComponent from './components/producthttpcomponent';
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutingComponent from './components/routingcomponents/mainroutingcomponent';
+import { msalConfig } from "./components/routingcomponentsmsal/authConfig";
+import MainRoutingMSALComponent from './components/routingcomponentsmsal/mainroutingcomponent';
+import TableGridUserComponent from './components/tablegridusercomponent';
+import ReactHookFormComponent from './components/reacthookform/reacthookformcomponent';
+
+const msalInstance = new PublicClientApplication(msalConfig);
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
-
- /* Create Saga Middleware */
-
- const sagaMiddleware = createSagaMiddleware();
-
-
-// Configure Redux store
-const store = configureStore({
-  reducer: {
-    products: productReducer
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)
-});
-
-
-sagaMiddleware.run(watchProductActions);
-
 root.render(
   <React.StrictMode>
-    <h1>Welcome to My React Redux App</h1>
-    <Provider store={store}>
-      <MainReduxSagaComponent />
-    </Provider>
+    {/* <App  info='Hello World'/> */}
+    {/* <ProductHttpComponent /> */}
+    {/* <BrowserRouter>
+      <MainRoutingComponent />
+    </BrowserRouter> */}
+    <ReactHookFormComponent />
   </React.StrictMode>
 );
 
  
+// root.render(
+//   <MsalProvider instance={msalInstance}>
+//      <BrowserRouter> 
+//     <MainRoutingMSALComponent />
+//     </BrowserRouter>
+//   </MsalProvider>,
+ 
+// )
  
 
 // If you want to start measuring performance in your app, pass a function
