@@ -7,7 +7,7 @@ const AddProductRTKComponent = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const prd = new ProductInfo('Prod-98765','Pen', 'Electronics','Light Pen',13333,0);
+    const prd = new ProductInfo('Prod-00019','USB SSD', 'Electronics','400TB',98766,0);
     addProduct({
         ProductId: prd.ProductId,
         ProductName: prd.ProductName,

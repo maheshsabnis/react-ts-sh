@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { productReducer } from './reduxapp/reducers';
-import MainReduxComponent from './reduxapp/components/mainreduxcomponent';
 import './index.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { apiSlice } from './components/rtkquery/api';
